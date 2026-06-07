@@ -469,7 +469,7 @@ export function Contact() {
               const Wrapper: any = c.href ? "a" : "div";
               const props = c.href ? { href: c.href, target: "_blank", rel: "noopener noreferrer" } : {};
               return (
-                <Wrapper key={c.label} {...props} className="glass flex items-center gap-4 rounded-2xl p-5 transition-transform hover:-translate-y-0.5">
+                <Wrapper key={c.label} {...props} className={`glass flex items-center gap-4 rounded-2xl p-5 transition-all ${c.href ? "cursor-pointer hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-glow" : ""}`}>
                   <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground">
                     <c.icon className="h-4 w-4" />
                   </span>
