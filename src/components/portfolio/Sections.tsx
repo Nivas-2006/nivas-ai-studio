@@ -399,7 +399,7 @@ export function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
   const EMAILJS_SERVICE_ID = "service_ny8kkxb";
-  const EMAILJS_TEMPLATE_ID = "template_u0zd936";
+  const EMAILJS_TEMPLATE_ID = "template_rqnsvep";
   const EMAILJS_PUBLIC_KEY = "bhcVOarD5QR94ejVA";
 
   const onChange = (id: keyof typeof form, v: string) =>
@@ -461,21 +461,25 @@ export function Contact() {
         <div className="grid gap-6 md:grid-cols-5">
           <div className="space-y-4 md:col-span-2">
             {[
-              { icon: Mail, label: "Email", value: "nivas@example.com" },
-              { icon: MapPin, label: "Location", value: "Coimbatore, India" },
-              { icon: Linkedin, label: "LinkedIn", value: "/in/nivas" },
-              { icon: Github, label: "GitHub", value: "/nivas" },
-            ].map((c) => (
-              <div key={c.label} className="glass flex items-center gap-4 rounded-2xl p-5">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground">
-                  <c.icon className="h-4 w-4" />
-                </span>
-                <div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground">{c.label}</div>
-                  <div className="text-sm font-medium">{c.value}</div>
-                </div>
-              </div>
-            ))}
+              { icon: Mail, label: "Email", value: "nivas@example.com", href: "mailto:nivas@example.com" },
+              { icon: MapPin, label: "Location", value: "Coimbatore, India", href: undefined as string | undefined },
+              { icon: Linkedin, label: "LinkedIn", value: "/in/nivas-thanga-ganapathy-g", href: "https://linkedin.com/in/nivas-thanga-ganapathy-g-b8b3b4343" },
+              { icon: Github, label: "GitHub", value: "/nivas", href: "https://github.com/" },
+            ].map((c) => {
+              const Wrapper: any = c.href ? "a" : "div";
+              const props = c.href ? { href: c.href, target: "_blank", rel: "noopener noreferrer" } : {};
+              return (
+                <Wrapper key={c.label} {...props} className="glass flex items-center gap-4 rounded-2xl p-5 transition-transform hover:-translate-y-0.5">
+                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground">
+                    <c.icon className="h-4 w-4" />
+                  </span>
+                  <div>
+                    <div className="text-xs uppercase tracking-wider text-muted-foreground">{c.label}</div>
+                    <div className="text-sm font-medium">{c.value}</div>
+                  </div>
+                </Wrapper>
+              );
+            })}
           </div>
 
           <form
@@ -551,7 +555,7 @@ export function Footer() {
         </div>
         <div className="flex items-center gap-3 text-muted-foreground">
           <a href="#" className="hover:text-foreground"><Github className="h-4 w-4" /></a>
-          <a href="#" className="hover:text-foreground"><Linkedin className="h-4 w-4" /></a>
+          <a href="https://linkedin.com/in/nivas-thanga-ganapathy-g-b8b3b4343" target="_blank" rel="noopener noreferrer" className="hover:text-foreground"><Linkedin className="h-4 w-4" /></a>
           <a href="#" className="hover:text-foreground"><Mail className="h-4 w-4" /></a>
         </div>
         <div className="text-xs text-muted-foreground">
