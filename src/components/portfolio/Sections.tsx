@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 import {
   Code2,
   Figma,
