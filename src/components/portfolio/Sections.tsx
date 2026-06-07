@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 import {
   Code2,
   Figma,
@@ -393,6 +395,61 @@ export function Achievements() {
 /* ---------- CONTACT ---------- */
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+
+  const EMAILJS_SERVICE_ID = "service_ny8kkxb";
+  const EMAILJS_TEMPLATE_ID = "template_u0zd936";
+  const EMAILJS_PUBLIC_KEY = "bhcVOarD5QR94ejVA";
+
+  const onChange = (id: keyof typeof form, v: string) =>
+    setForm((f) => ({ ...f, [id]: v }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const subject = form.subject.trim();
+    const message = form.message.trim();
+    if (!name || !email || !subject || !message) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+    if (name.length > 100 || subject.length > 150 || message.length > 2000) {
+      toast.error("Input is too long");
+      return;
+    }
+    setLoading(true);
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: name,
+          from_email: email,
+          subject,
+          message,
+          to_name: "Nivas",
+          reply_to: email,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
+      setSent(true);
+      toast.success("Message sent — I'll get back to you soon!");
+      setForm({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setSent(false), 3000);
+    } catch (err: any) {
+      console.error("EmailJS error:", err);
+      toast.error(err?.text || "Failed to send. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="relative py-28">
       <div className="mx-auto max-w-6xl px-6">
@@ -422,11 +479,7 @@ export function Contact() {
           </div>
 
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSent(true);
-              setTimeout(() => setSent(false), 3000);
-            }}
+            onSubmit={handleSubmit}
             className="glass relative overflow-hidden rounded-3xl p-8 md:col-span-3"
           >
             <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-primary/20 blur-3xl" />
@@ -442,6 +495,8 @@ export function Contact() {
                     type={f.type}
                     required
                     placeholder=" "
+                    value={form[f.id as keyof typeof form]}
+                    onChange={(e) => onChange(f.id as keyof typeof form, e.target.value)}
                     className="peer h-12 w-full rounded-xl border border-border bg-secondary/40 px-4 pt-4 text-sm outline-none transition-all focus:border-primary focus:bg-secondary/70"
                   />
                   <label
@@ -458,6 +513,8 @@ export function Contact() {
                   required
                   rows={5}
                   placeholder=" "
+                  value={form.message}
+                  onChange={(e) => onChange("message", e.target.value)}
                   className="peer w-full rounded-xl border border-border bg-secondary/40 px-4 pb-2 pt-5 text-sm outline-none transition-all focus:border-primary focus:bg-secondary/70"
                 />
                 <label
@@ -470,9 +527,10 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02]"
+                disabled={loading}
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:hover:scale-100"
               >
-                {sent ? "Message sent ✓" : (<>Send message <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" /></>)}
+                {loading ? "Sending..." : sent ? "Message sent ✓" : (<>Send message <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" /></>)}
               </button>
             </div>
           </form>
