@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ArrowRight, Download, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Download, Mail, Sparkles } from "lucide-react";
 import profile from "@/assets/profile.jpg";
 
 const roles = [
@@ -96,10 +96,13 @@ export function Hero() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="#work"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-6 py-3 text-sm font-semibold backdrop-blur transition-all hover:bg-secondary"
+              href="https://late-jade-ueta8tsd.edgeone.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-6 py-3 text-sm font-semibold backdrop-blur transition-all hover:bg-secondary"
             >
               View Resume
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a
               href="#work"
@@ -112,8 +115,8 @@ export function Hero() {
           <div className="mt-12 grid max-w-md grid-cols-3 gap-6">
             {[
               ["6.56", "CGPA"],
-              ["10+", "Projects"],
-              ["1+", "Internship"],
+              ["3+", "Projects"],
+              ["2+", "Internship"],
             ].map(([n, l]) => (
               <div key={l}>
                 <div className="text-2xl font-bold text-gradient">{n}</div>
