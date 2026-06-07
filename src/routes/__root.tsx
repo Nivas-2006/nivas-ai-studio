@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Nivas" },
+      { name: "description", content: "Nivas AI Studio generates a production-ready, AI-era portfolio website with advanced animations and premium UI/UX." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Nivas" },
+      { property: "og:description", content: "Nivas AI Studio generates a production-ready, AI-era portfolio website with advanced animations and premium UI/UX." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Nivas" },
+      { name: "twitter:description", content: "Nivas AI Studio generates a production-ready, AI-era portfolio website with advanced animations and premium UI/UX." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0cb74a23-b77e-487e-938e-3f27cdec6f27/id-preview-b3774dfd--90ec8e2d-fb84-4a69-ae0a-473c5210a41e.lovable.app-1780837337466.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0cb74a23-b77e-487e-938e-3f27cdec6f27/id-preview-b3774dfd--90ec8e2d-fb84-4a69-ae0a-473c5210a41e.lovable.app-1780837337466.png" },
     ],
     links: [
       {
