@@ -123,29 +123,31 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Profile orb */}
+        {/* Profile square */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
           className="relative mx-auto h-[22rem] w-[22rem] sm:h-[26rem] sm:w-[26rem]"
         >
-          {/* outer rings */}
-          <div className="absolute inset-0 rounded-full border border-primary/30" />
-          <div className="absolute inset-4 rounded-full border border-accent/30 [animation:spin_30s_linear_infinite]" />
-          <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-primary/30 via-transparent to-accent/30 blur-2xl" />
-          {/* orbit dots */}
-          <div className="absolute inset-0 [animation:spin_18s_linear_infinite]">
-            <span className="absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 rounded-full bg-primary shadow-glow" />
-          </div>
-          <div className="absolute inset-3 [animation:spin_22s_linear_infinite_reverse]">
-            <span className="absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-accent shadow-glow" />
-          </div>
+          {/* outer frames */}
+          <div className="absolute inset-0 rounded-[2rem] border border-primary/30" />
+          <motion.div
+            animate={{ rotate: [0, 3, 0, -3, 0] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-4 rounded-[1.75rem] border border-accent/30"
+          />
+          <div className="absolute inset-0 -z-10 rounded-[2.25rem] bg-gradient-to-tr from-primary/30 via-transparent to-accent/30 blur-2xl" />
+          {/* corner accents */}
+          <span className="absolute -left-1 -top-1 h-6 w-6 rounded-tl-2xl border-l-2 border-t-2 border-primary" />
+          <span className="absolute -right-1 -top-1 h-6 w-6 rounded-tr-2xl border-r-2 border-t-2 border-accent" />
+          <span className="absolute -bottom-1 -left-1 h-6 w-6 rounded-bl-2xl border-b-2 border-l-2 border-accent" />
+          <span className="absolute -bottom-1 -right-1 h-6 w-6 rounded-br-2xl border-b-2 border-r-2 border-primary" />
 
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-8 overflow-hidden rounded-full border border-border bg-secondary shadow-elegant"
+            className="absolute inset-8 overflow-hidden rounded-3xl border border-border bg-secondary shadow-elegant"
           >
             <img src={profile} alt="Nivas Thanga Ganapathy" className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
