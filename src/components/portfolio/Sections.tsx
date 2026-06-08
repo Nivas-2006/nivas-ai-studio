@@ -17,6 +17,7 @@ import {
   Award,
   ArrowUpRight,
   Send,
+  Instagram,
 } from "lucide-react";
 
 const fadeUp = {
@@ -261,7 +262,7 @@ export function Projects() {
 const timeline = [
   {
     icon: GraduationCap,
-    year: "2023 — Present",
+    year: "2023 — 2027 · Passing Out",
     title: "B.Sc Computer Science",
     org: "Karpagam Academy of Higher Education",
     desc: "Foundations in CS with a focus on web, interfaces and applied AI.",
@@ -365,10 +366,10 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 
 export function Achievements() {
   const stats = [
-    { n: 12, s: "+", label: "Projects Completed" },
+    { n: 1, s: "+", label: "Projects Completed" },
     { n: 30, s: "+", label: "Design Concepts" },
-    { n: 800, s: "h", label: "Hours of Practice" },
-    { n: 1, s: "+", label: "Internship" },
+    { n: 400, s: "h", label: "Hours of Practice" },
+    { n: 2, s: "+", label: "Internship" },
   ];
   return (
     <section className="relative py-20">
@@ -464,6 +465,7 @@ export function Contact() {
               { icon: Mail, label: "Email", value: "nivas@example.com", href: "mailto:nivas@example.com" },
               { icon: MapPin, label: "Location", value: "Coimbatore, India", href: undefined as string | undefined },
               { icon: Linkedin, label: "LinkedIn", value: "/in/nivas-thanga-ganapathy-g", href: "https://linkedin.com/in/nivas-thanga-ganapathy-g-b8b3b4343" },
+              { icon: Instagram, label: "Instagram", value: "@nivax.31", href: "https://www.instagram.com/nivax.31?igsh=MTBsMTBlb2VwYmpxdw==&utm_source=ig_contact_invite" },
               { icon: Github, label: "GitHub", value: "/nivas", href: "https://github.com/" },
             ].map((c) => {
               const Wrapper: any = c.href ? "a" : "div";
