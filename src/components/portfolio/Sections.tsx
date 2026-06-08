@@ -262,14 +262,14 @@ export function Projects() {
 const timeline = [
   {
     icon: GraduationCap,
-    year: "2023 — 2027 · Passing Out",
+    year: "2027 · Passing Out",
     title: "B.Sc Computer Science",
     org: "Karpagam Academy of Higher Education",
     desc: "Foundations in CS with a focus on web, interfaces and applied AI.",
   },
   {
     icon: Briefcase,
-    year: "2024",
+    year: "2025 — 2026",
     title: "Design Internship",
     org: "Studio · Coimbatore",
     desc: "UI design, poster systems and front-end handoff for live projects.",
@@ -462,7 +462,7 @@ export function Contact() {
         <div className="grid gap-6 md:grid-cols-5">
           <div className="space-y-4 md:col-span-2">
             {[
-              { icon: Mail, label: "Email", value: "nivas@example.com", href: "mailto:nivas@example.com" },
+              { icon: Mail, label: "Email", value: "nivasthangaganapathy@gmail.com", href: "mailto:nivasthangaganapathy@gmail.com" },
               { icon: MapPin, label: "Location", value: "Coimbatore, India", href: undefined as string | undefined },
               { icon: Linkedin, label: "LinkedIn", value: "/in/nivas-thanga-ganapathy-g", href: "https://linkedin.com/in/nivas-thanga-ganapathy-g-b8b3b4343" },
               { icon: Instagram, label: "Instagram", value: "@nivax.31", href: "https://www.instagram.com/nivax.31?igsh=MTBsMTBlb2VwYmpxdw==&utm_source=ig_contact_invite" },
@@ -471,7 +471,7 @@ export function Contact() {
               const Wrapper: any = c.href ? "a" : "div";
               const props = c.href ? { href: c.href, target: "_blank", rel: "noopener noreferrer" } : {};
               return (
-                <Wrapper key={c.label} {...props} className={`glass flex items-center gap-4 rounded-2xl p-5 transition-all ${c.href ? "cursor-pointer hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-glow" : ""}`}>
+                <Wrapper key={c.label} {...props} className={`glass flex items-center gap-4 rounded-2xl p-5 transition-colors ${c.href ? "cursor-pointer hover:border-primary/40" : ""}`}>
                   <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground">
                     <c.icon className="h-4 w-4" />
                   </span>
@@ -558,7 +558,8 @@ export function Footer() {
         <div className="flex items-center gap-3 text-muted-foreground">
           <a href="#" className="hover:text-foreground"><Github className="h-4 w-4" /></a>
           <a href="https://linkedin.com/in/nivas-thanga-ganapathy-g-b8b3b4343" target="_blank" rel="noopener noreferrer" className="hover:text-foreground"><Linkedin className="h-4 w-4" /></a>
-          <a href="#" className="hover:text-foreground"><Mail className="h-4 w-4" /></a>
+          <a href="https://www.instagram.com/nivax.31?igsh=MTBsMTBlb2VwYmpxdw==&utm_source=ig_contact_invite" target="_blank" rel="noopener noreferrer" className="hover:text-foreground"><Instagram className="h-4 w-4" /></a>
+          <a href="mailto:nivasthangaganapathy@gmail.com" className="hover:text-foreground"><Mail className="h-4 w-4" /></a>
         </div>
         <div className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} — Crafted with care.
