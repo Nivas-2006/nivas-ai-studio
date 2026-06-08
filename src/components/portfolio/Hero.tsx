@@ -118,7 +118,7 @@ export function Hero() {
           <div className="mt-12 grid max-w-md grid-cols-3 gap-6">
             {[
               ["6.56", "CGPA"],
-              ["3+", "Projects"],
+              ["1+", "Projects"],
               ["2+", "Internship"],
             ].map(([n, l]) => (
               <div key={l}>
@@ -129,21 +129,26 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Profile photo (no mask) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
           className="relative mx-auto h-[22rem] w-[22rem] sm:h-[26rem] sm:w-[26rem]"
         >
-          <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-primary/30 via-transparent to-accent/30 blur-2xl" />
-          <motion.img
+          <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-primary/40 via-transparent to-accent/40 blur-3xl" />
+          <div className="absolute -inset-2 rounded-[2rem] bg-gradient-to-tr from-primary to-accent opacity-70 blur-md" />
+          <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            src={profile}
-            alt="Nivas Thanga Ganapathy"
-            className="h-full w-full object-contain drop-shadow-2xl"
-          />
+            className="relative h-full w-full overflow-hidden rounded-[2rem] border border-border shadow-elegant"
+          >
+            <img
+              src={profile}
+              alt="Nivas Thanga Ganapathy"
+              className="h-full w-full object-cover"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-background/30 via-transparent to-transparent" />
+          </motion.div>
 
           {/* floating tags */}
           <motion.div
